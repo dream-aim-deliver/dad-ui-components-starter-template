@@ -4,6 +4,24 @@ Developing a component library is a bit different from developing a application 
 
 This guide will help you understand the best practices for developing a component library in React and the things you should consider before you start developing your component library.
 
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Client Components or Server Components ?](#client-components-or-server-components-)
+- [React DOM Rendering and Re-Rendering](#react-dom-rendering-and-re-rendering)
+- [State Management](#state-management)
+    - [Composed Components > Prop Drilling](#composed-components--prop-drilling)
+    - [Composed Components over Context API](#composed-components-over-context-api)
+    - [Zustand over Context API](#zustand-over-context-api)
+    - [Signals over Hooks ( useSignal, useComputed > useState )](#signals-over-hooks--usesignal-,-usecomputed--usestate-)
+    - [Epic Theo Rant](#epic-theo-rant)
+- [Testing](#testing)
+- [Logging](#logging)
+- [Theme and Styling](#theme-and-styling)
+- [Optimistic Updates](#optimistic-updates)
+- [The Frontend Architect Guide](#the-frontend-architect-guide)
+
+
 # Client Components or Server Components ?
 You need to decide whether you want to develop client side components or server side components. Remember if you use [React Hooks](https://react.dev/reference/react/hooks) or custom hooks from other libraries, you will not be able to use them in server side components.
 
