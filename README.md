@@ -76,7 +76,7 @@ Your README.md Content goes here:
       </a>
     </td>
     <td style="padding:10px; border:1px solid #ccc; text-align:center;">
-      <a href="https://dream-aim-deliver.github.io/dad-ui-components-starter-template/storyook">
+      <a href="https://dream-aim-deliver.github.io/dad-ui-components-starter-template/storybook">
         <img src="https://storybook.js.org/images/logos/icon-storybook.png" alt="Storybook" width="100px" style="border-radius: 10px;">
       </a>
     </td>
