@@ -1,5 +1,5 @@
 # Before I Contribute
-Please go through the [React State of Mind](./REACT_STATE_OF_MIND.md) before contributing to this project. It is a short document that contains several valuable tips and tricks for writing React code.
+Please go through the [Development Guidelines](./DEVELOPMENT_GUIDELINES.md) before contributing to this project. It is a short document that contains several valuable tips and tricks for writing React code.
 
 # How Can I Contribute?
 ## Table of Contents
