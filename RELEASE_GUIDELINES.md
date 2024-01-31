@@ -8,14 +8,15 @@ You can make a release using the CI or manually via the command line.
 
 If the repository is private, you should consider using the manual release process.
 
-# Enable/Disable CI Release
+
+# Configure CI Release
 
 There are two Github Actions that are used to automate the release process:
 - `npm-publish.yml` - This action is used to publish the package to NPM.
-- `npm-gh-publish.yml` - This action is used to publish the package to GitHub NPM Registry.
-
 
 > **NOTE**: Please change the triggers for these actions to enable/disable the CI release process.
+
+Please go through both the actions and 
 
 # Prepare for Release
 Before you release a new version, please make sure you have done the following:
@@ -42,11 +43,12 @@ The version should follow [semantic versioning](https://semver.org/).
 
 # CI Release
 Create a new Release on Github. Remember to create a new release tag. When you create a new release in GitHub, the CI will automatically publish the package to NPM.
+> **NOTE**: This process is only for public repositories.
 
 # Manual Release
 > **NOTE**: This process is only for private repositories.
 
-Update your `package.json` to the next version number and tag a release.
+Update your `package.json` to the next version number and tag a release. 
 
 If you are publishing to a private registry such as GitHub packages, update your `package.json` to include `publishConfig` and `repository`:
 
@@ -86,6 +88,8 @@ npm login
 ```
 
 Submit your package to the registry:
+
+> **NOTE**: If you are using a private registry such as GitHub packages, you will need to add the `--registry` flag to the `npm publish` command and use `--access restricted` argument.
 
 ```bash
 npm publish --access public
