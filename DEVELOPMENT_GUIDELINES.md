@@ -27,6 +27,8 @@ You need to decide whether you want to develop client side components or server 
 
 Please refer the following guide from [Next.js](https://nextjs.org/docs/app/building-your-application/rendering#nesting-server-components-inside-client-components) , especially the [Composing Patterns](https://nextjs.org/docs/app/building-your-application/rendering/composition-patterns) setion for more information on how to decide between client side and server side components.
 
+Here is a video that gives a brief introduction to React Server Components:
+[![React Server Components Intro](https://img.youtube.com/vi/rGPpQdbDbwo/0.jpg)](https://www.youtube.com/watch?v=rGPpQdbDbwo)
 
 # React DOM Rendering and Re-Rendering 
 For your client components, you need to be aware of how the rendering and re-rendering of components works in React. Ideally, we want to avoid re-rendering of components as much as possible. How you compose your components determines how often your components will re-render. 
@@ -75,6 +77,12 @@ Please consider installing [`@preact/signals-react`](https://www.npmjs.com/packa
 
 > **TIP:** You could, for example, create a Zustand store of signals to avoid prop drilling in composed client components.
 
+## React Query for async state management
+React Query is a great library for managing async state in your components. It is a great alternative to `useEffect` and `useState` for managing async state in your components.
+
+Here is a video explaining how to use React Query for async state management:
+
+[![React Query](https://img.youtube.com/vi/vxkbf5QMA2g/0.jpg)](https://www.youtube.com/watch?v=vxkbf5QMA2g)
 
 ##  Epic Theo Rant
 State management is a complex topic. There are many ways to manage state in React and there are different types of `States` as well. The following video explains the different ways to manage state in React:

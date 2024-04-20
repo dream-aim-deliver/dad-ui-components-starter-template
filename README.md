@@ -57,8 +57,65 @@ Please go through the following checklist to ensure you have configured the temp
 - [ ] Please read and update the [Contributing Guidelines](./CONTRIBUTING.md) before contributing to this project.
 - [ ] Please go through the [Release Guidelines](./RELEASE_GUIDELINES.md) before releasing a new version of this project.
 - [ ] Please make sure your developers have read the [Development Guidelines](./DEVELOPMENT_GUIDELINES.md) before starting development.
-- [ ] Please remember to define the theme of your component library (colors, shades, fonts, animations, breakpoints etc..) in the `tailwind.config.js` file.
+- [ ] Please remember to define the theme of your component library (colors, shades, fonts, animations, breakpoints etc..) in the `lib/tailwind/config.ts` file.
 - [ ] Once you have completed the above steps, you can delete the contents of this `README.md` file from here above. Please add any additional information about your component library at the end of this README. This file is used to generate the homepage for your NPM Package on npmjs.com and is also the homepage for your TypeDoc dashboard.
+
+## Picking a Color Palette
+
+When picking a color palette for your component library, consider using a tool like [Coolors](https://coolors.co/) to generate a color palette. You can then define the colors in the `lib/tailwind/config.ts` file.
+The template ships with a default color palette that you can use as a starting point, but you should customize it to match your brand.
+[![Picking a Color patelle](https://img.youtube.com/vi/yYwEnLYT55c/0.jpg)](https://www.youtube.com/watch?v=yYwEnLYT55c)
+
+## Usage
+The component library built with this template can be used in any project that supports TailwindCSS. After publishing your component library to NPM, you can install it in your project by running:
+
+```
+npm install <my-component-library>
+```
+
+You should then configure the `tailwind.config.js` file in your project to include the styles from the component library.
+
+First, import the tailwind config exported from the component library:
+
+```js
+import { defaultTheme } from "<my-component-library>";
+```
+
+Then, include the theme in your project's `tailwind.config.js` file:
+
+```js
+export default {
+  theme: {
+    ...defaultTheme,
+    extend: {
+    },
+  },
+  plugins: [],
+};
+```
+
+Additionally, modify the `content` array in the Tailwind Config to include the components from the component library:
+
+```js
+export default {
+  content: [
+    "node_modules/<my-component-library>/dist/**/*.js",
+    ...other sources
+  ],
+  theme: {
+    ...defaultTheme,
+    extend: {
+    },
+  },
+}
+
+
+
+Then you can import and use the components in your project:
+
+```tsx
+import { Button } from '<my-component-library>';
+```
 
 
 ---
