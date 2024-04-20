@@ -35,20 +35,25 @@ export interface ButtonProps {
 export const Button = ({
   primary = false,
   size = "medium",
-  backgroundColor,
   label,
   ...props
 }: ButtonProps) => {
+  const classes = [];
   const mode = primary ? primaryStyles : secondaryStyles;
-  const classes = twMerge(mode);
+  classes.push(mode);
+  if (size === "small") {
+    classes.push("text-sm");
+  }
+  if (size === "medium") {
+    classes.push("text-base");
+  }
+  if (size === "large") {
+    classes.push("text-xl");
+  }
+
   return (
-    <button
-      type="button"
-      className={classes}
-      style={{ backgroundColor }}
-      {...props}
-    >
-      {label}: {size}
+    <button type="button" className={twMerge(classes)} {...props}>
+      {primary ? "Primary" : "Secondary"} {label}: {size}
     </button>
   );
 };

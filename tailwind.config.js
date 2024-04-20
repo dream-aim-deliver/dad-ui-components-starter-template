@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import tailwindDefaults from "tailwindcss/defaultConfig";
 import {
   defaultContent,
   defaultTheme,
@@ -7,6 +8,7 @@ import {
 export default {
   content: [...defaultContent],
   theme: {
+    ...tailwindDefaults.theme,
     ...defaultTheme,
   },
   plugins: [...defaultPlugins],
