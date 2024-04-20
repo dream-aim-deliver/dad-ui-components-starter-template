@@ -60,11 +60,23 @@ Please go through the following checklist to ensure you have configured the temp
 - [ ] Please remember to define the theme of your component library (colors, shades, fonts, animations, breakpoints etc..) in the `lib/tailwind/config.ts` file.
 - [ ] Once you have completed the above steps, you can delete the contents of this `README.md` file from here above. Please add any additional information about your component library at the end of this README. This file is used to generate the homepage for your NPM Package on npmjs.com and is also the homepage for your TypeDoc dashboard.
 
-## Picking a Color Palette
+## Add-On Resources
+### Picking a Color Palette
 
 When picking a color palette for your component library, consider using a tool like [Coolors](https://coolors.co/) to generate a color palette. You can then define the colors in the `lib/tailwind/config.ts` file.
 The template ships with a default color palette that you can use as a starting point, but you should customize it to match your brand.
 [![Picking a Color patelle](https://img.youtube.com/vi/yYwEnLYT55c/0.jpg)](https://www.youtube.com/watch?v=yYwEnLYT55c)
+
+### Icons
+
+You can use [Heroicons](https://heroicons.com/) to find icons for your component library. You can then use the `Icon` component in the template to render the icons in your components.
+Another great resource for icons is [Lucide Icon](https://lucide.dev/icons/) and [Radix Icons](https://www.radix-ui.com/icons).
+
+
+### Working with other UI Libraries/Components
+
+We can recommend [Radix UI](https://www.radix-ui.com/), [Shadcn](https://ui.shadcn.com/) as a great resource for building accessible and composable UI components. You can use these components in your component library to build more complex components.
+
 
 ## Usage
 The component library built with this template can be used in any project that supports TailwindCSS. After publishing your component library to NPM, you can install it in your project by running:
@@ -108,7 +120,7 @@ export default {
     },
   },
 }
-
+```
 
 
 Then you can import and use the components in your project:
