@@ -78,6 +78,39 @@ Another great resource for icons is [Lucide Icon](https://lucide.dev/icons/) and
 We can recommend [Radix UI](https://www.radix-ui.com/), [Shadcn](https://ui.shadcn.com/) as a great resource for building accessible and composable UI components. You can use these components in your component library to build more complex components.
 
 
+---
+Your README.md Content goes here:
+
+# <MY_COMPONENT_REPOSITORY>
+
+<div style="text-align:center;">
+
+<table style="border:1px solid #ccc; border-collapse: collapse; width:100%;">
+  <tr>
+    <td style="padding:10px; border:1px solid #ccc; text-align:center;">
+      <a href="https://dream-aim-deliver.github.io/dad-ui-components-starter-template/">
+        <img src="https://bischrob.github.io/images/githubpages/githubpages.jpeg" alt="Github Pages" width="100px" style="border-radius: 10px;">
+      </a>
+    </td>
+    <td style="padding:10px; border:1px solid #ccc; text-align:center;">
+      <a href="https://dream-aim-deliver.github.io/dad-ui-components-starter-template/storybook">
+        <img src="https://storybook.js.org/images/logos/icon-storybook.png" alt="Storybook" width="100px" style="border-radius: 10px;">
+      </a>
+    </td>
+    <td style="padding:10px; border:1px solid #ccc; text-align:center;">
+      <a href="https://dream-aim-deliver.github.io/dad-ui-components-starter-template/docs">
+        <img src="https://user-images.githubusercontent.com/21266147/101224549-386fb400-368f-11eb-8390-6db2ecd1fe61.png" alt="Docs" height="100px" style="border-radius: 10px;">
+      </a>
+    </td>
+    <td style="padding:10px; border:1px solid #ccc; text-align:center;">
+      <a href="https://dream-aim-deliver.github.io/dad-ui-components-starter-template/coverage">
+        <img src="https://vitest.dev/logo.svg" alt="Coverage" width="100px" height="100px" style="border-radius: 10px;">
+      </a>
+    </td>
+  </tr>
+</table>
+</div>
+
 ## Usage
 The component library built with this template can be used in any project that supports TailwindCSS. After publishing your component library to NPM, you can install it in your project by running:
 
@@ -111,15 +144,88 @@ Additionally, modify the `content` array in the Tailwind Config to include the c
 ```js
 export default {
   content: [
-    "node_modules/<my-component-library>/dist/**/*.js",
+    "<my-component-library>/dist/**/*.js",
     ...other sources
   ],
   theme: {
     ...defaultTheme,
-    extend: {
-    },
+    // other theme configurations, be careful not to override the default theme or provide a merged theme object here
   },
 }
+```
+
+Then, include the plugins from the component library in your project's `tailwind.config.js` file:
+
+```js
+import { defaultPlugins } from "<my-component-library>";
+
+export default {
+  plugins: [defaultPlugins.map((plugin) => require(plugin))].extend([
+    // other plugins
+  ]),
+};
+```
+
+Additionally, modify the `content` array in the Tailwind Config to include the components from the component library:
+
+```js
+export default {
+  content: [
+    "<my-component-library>/dist/**/*.js",
+    ...other sources
+  ],
+  theme: {
+    ...defaultTheme,
+    // other theme configurations
+  },
+}
+```
+
+An example of a `tailwind.config.ts` file that includes the component library is shown below:
+
+```ts
+import type { Config } from "tailwindcss"
+import { defaultTheme, defaultPlugins } from "<my-component-library>"
+
+const config = {
+  darkMode: ["class"],
+  content: [
+    './node_modules/<my-component-library>/dist/**/*.js',
+    ...your content sources
+  ],
+  prefix: "",
+  theme: {
+    extend: {
+      ...defaultTheme.extend
+    },
+  },
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-argument
+  plugins: [defaultPlugins.map((plugin: string) => require(plugin))],
+  // plugins: [require("tailwindcss-animate")],
+} satisfies Config
+
+export default config
+```
+
+The corresponding `tailwind.config.js` file is shown below:
+
+```js
+/** @type {import('tailwindcss').Config} */
+import {
+  defaultTheme,
+  defaultContent,
+  defaultPlugins,
+} from "./lib/tailwind/config";
+module.exports = {
+  content: ['/node_modules/<my-component-library>/dist/**/*.js', ...defaultContent],
+  prefix: "",
+
+  theme: {
+    ...defaultTheme,
+  },
+  plugins: [defaultPlugins.map((plugin) => require(plugin))],
+};
+
 ```
 
 
@@ -129,36 +235,97 @@ Then you can import and use the components in your project:
 import { Button } from '<my-component-library>';
 ```
 
+### Dark Mode
+You might have to add the following to your `tailwind.config.js` file to enable dark mode:
 
----
-Your README.md Content goes here:
+```js
+module.exports = {
+  darkMode: 'class',
+  // other configurations
+}
+```
 
-# <MY_COMPONENT_REPOSITORY>
+Then you can use the dark mode classes in your project:
 
-<div style="text-align:center;">
-
-<table style="border:1px solid #ccc; border-collapse: collapse; width:100%;">
-  <tr>
-    <td style="padding:10px; border:1px solid #ccc; text-align:center;">
-      <a href="https://dream-aim-deliver.github.io/dad-ui-components-starter-template/">
-        <img src="https://bischrob.github.io/images/githubpages/githubpages.jpeg" alt="Github Pages" width="100px" style="border-radius: 10px;">
-      </a>
-    </td>
-    <td style="padding:10px; border:1px solid #ccc; text-align:center;">
-      <a href="https://dream-aim-deliver.github.io/dad-ui-components-starter-template/storybook">
-        <img src="https://storybook.js.org/images/logos/icon-storybook.png" alt="Storybook" width="100px" style="border-radius: 10px;">
-      </a>
-    </td>
-    <td style="padding:10px; border:1px solid #ccc; text-align:center;">
-      <a href="https://dream-aim-deliver.github.io/dad-ui-components-starter-template/docs">
-        <img src="https://user-images.githubusercontent.com/21266147/101224549-386fb400-368f-11eb-8390-6db2ecd1fe61.png" alt="Docs" height="100px" style="border-radius: 10px;">
-      </a>
-    </td>
-    <td style="padding:10px; border:1px solid #ccc; text-align:center;">
-      <a href="https://dream-aim-deliver.github.io/dad-ui-components-starter-template/coverage">
-        <img src="https://vitest.dev/logo.svg" alt="Coverage" width="100px" height="100px" style="border-radius: 10px;">
-      </a>
-    </td>
-  </tr>
-</table>
+```html
+<div class="bg-white dark:bg-black">
+  <!-- content -->
 </div>
+```
+
+Please check the `lib/tailwind/config.ts` file and the `tailwind.config.js` file in this ui kit to see if you need  to include any other configurations in your project.
+
+
+## Development
+### Local Development
+To start the development server, run:
+
+```
+npm run dev
+```
+
+This will start the `Storybook` server at `http://localhost:6006`.
+
+### Development against a project
+
+
+#### Setup
+To develop against a project, you can link the component library to the project. First, build the component library:
+
+```
+npm run build
+```
+
+Then, link the component library to the project:
+
+```
+cd dist
+npm link
+```
+
+In the project, link the component library:
+
+```
+npm link my-component-library
+```
+
+Then, start the development server in the component library:
+
+```
+npm run build:watch
+```
+
+After that configure TailwindCSS as desribed in the [Usage](#usage) section.
+
+
+#### Cleanup
+To unlink the component library from the project, run:
+
+```
+npm unlink my-component-library
+```
+
+Then, unlink the component library:
+
+```
+cd dist
+npm unlink
+```
+
+In case you forgot to unlink the component library, 
+
+```
+npm rm --global "my-component-library"
+```
+
+Verify the global package is removed:
+
+```
+npm list -g --depth=0
+```
+
+Then, in the project, do a clean install:
+
+```
+npm ci 
+```
